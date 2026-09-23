@@ -1,0 +1,144 @@
+Bagian 1
+1. Penelusuran Fungsi
+Fungsi:
+->isSpecial(a,b) :
+->(a < 0) or ((b != 0) and then (a mod b = 0))
+
+->isSpecial (-12, 0)
+->(-12 < 0) or ((0 != 0) and then (-12 mod 0 = 0))
+->True or (False)
+->True
+
+->isSpecial (12,0)
+->(12 < 0) or ((0 != 0) and then (12 mod 0 = 0))
+->False or ((False) and then (12 mod 0 = 0))
+->False
+
+->isSpecial (12, 5)
+->(12 < 0) or ((5 != 0) and then (12 mod 5 = 0))
+->False or ((True) and False)
+->False or False
+->False
+
+->isSpecial (12,3)
+->(12 < 0) or ((3) != 0) and then (12 mod 3 = 0))
+->False or ((True) and True)
+->False or True
+->True
+
+2. Penelusuran Fungsi
+Fungsi:
+mystery (a, b) :
+    depend on a, b
+        a < b : 0
+        a ≥ b : 1 + mystery (a - b, b)
+
+a.
+->mystery(17,5)
+->1 + mystery(12,5)
+->1 + (1 + mystery(7,5))
+->1 + (1 + (1 + mystery(2,5)))
+->1 + (1 + (1 + 0))
+->3
+
+->mystery(15,5)
+->1 + mystery(10,5)
+->1 + (1 + mystery(5,5))
+->1 + (1 + (1 + mystery(0,5)))
+->1 + (1 + (1 + 0 ))
+-> 3
+
+->mystery(4,7)
+->0
+
+b. dapat dilihat dari output bahwa fungsi mystery adalah fungsi `div`
+Nama fungsi : div
+
+Definisi dan spesifikasi
+div : Integer >= 0, Integer > 0 -> Integer
+{div(a,b) adalah fungsi yang membagi a dan b dengan pembulatan ke bawah}
+
+Realisasi
+div(a,b) :
+    depend on a, b
+        a < b : 0
+        a ≥ b : 1 + div (a - b, b)
+
+c.
+Realisasi
+div(a,b) :
+    depend on a,b
+        a < b : 0
+        a >= b : a div b
+
+
+
+
+3. Penelusuran Fungsi
+mystery(a,b):
+    depend on a,b
+        a = 0 : <0,b>
+        a > 0 and b = 0 : <0,a>
+        a > 0 and b > 0 :
+            let
+                <x,y> : mystery(a-1,b-1)
+            in
+                <x+1,y+1>
+
+a.
+->mystery(5,2)
+->let <x,y> = mystery(4,1) in <x+1,y+1>
+->let <x,y> = (let <x,y> mystery(3,0) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> <0,3> in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = <1,4> in <x+1,y+1>
+-><2,5>
+
+->mystery(2,5)
+->let <x,y> = mystery (1,4) in <x+1,y+1>
+->let <x,y> = (let <x,y> mystery (0,3) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> <0,3> in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = <1,4> in <x+1,y+1>
+-><2,5>
+
+->mystery(4,4)
+->let <x,y> = mystery (3,3) in <x+1,y+1>
+->let <x,y> = (let <x,y> mystery (2,2) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> (let <x,y> mystery(1,1) in <x+1,y+1>)) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> (let <x,y> (let <x,y> mystery(0,0) in <x+1,y+1>) in <x+1,y+1>) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> (let <x,y> (let <x,y> <0,0> in <x+1,y+1>) in <x+1,y+1>) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> (let <x,y> <1,1> in <x+1,y+1>) in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = (let <x,y> <2,2> in <x+1,y+1>) in <x+1,y+1>
+->let <x,y> = <3,3> in <x+1,y+1>
+-><4,4>
+
+b.
+Nama fungsi : minMax
+Definisi dan spesifikasi
+minMax : Integer => 0, Integer >=0 -> <Integer => 0,Integer => 0>
+{minMax(a,b) menghasilkan dua titik yang paling kecil dan paling besar secara berturut-turut dalam format <a,b>}
+
+Realisasi
+minMax(a,b) :
+    depend on a,b
+        a = 0 : <0,b>
+        a > 0 and b = 0 : <0,a>
+        a > 0 and b > 0:
+            let
+                <x,y> : mystery(a-1,b-1)
+            in
+                <x+1,y+1>
+
+c.Membuat fungsi menjadi tidak rekursif
+minMax(a,b) :
+    depend on a,b
+        a = b : <a,b>
+        a > b : <b,a>
+        otherwise : <a,b>
+
+
+Bagian 2
+1.
+Judul Biaya
+
+
+
